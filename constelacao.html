@@ -1,0 +1,27 @@
+<script>
+  var [estrelas, estrela1, estrela2] = prompt().split(",").map(Number);
+  var d = 0;
+
+  if (estrelas >= 4 && estrelas <= 8) {
+    var x = new Array(estrelas);
+    for (i = 0; i < estrelas; i++) {
+      x[i] = new Array(estrelas);
+
+      for (j = 0; j < estrelas; j++) {
+        x[i][j] = Math.random().toFixed(0);
+      }
+      x[i][d] = 0;
+      d++;
+    }
+    if (x[estrela1][estrela2] == 1 && x[estrela2][estrela1] == 1) {
+      console.log("há ligação");
+    } else {
+      console.log("não há ligação");
+    }
+  }
+
+  for (var i = 0; i < x.length; i++) {
+    document.write("[" + x[i] + "]" + "<br />");
+  }
+  console.log(x);
+</script>

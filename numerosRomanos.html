@@ -1,0 +1,66 @@
+<script>
+  var numeroRomano = prompt("Digite o Numero Romano");
+  sum = 0;
+  traduzido = [];
+  for (i = 0; i < numeroRomano.length; i++) {
+    var digitoRomano = numeroRomano.charAt(i);
+    switch (digitoRomano) {
+      case "I":
+        traduzido.push(1);
+        break;
+      case "V":
+        traduzido.push(5);
+        break;
+      case "X":
+        traduzido.push(10);
+        break;
+      case "L":
+        traduzido.push(50);
+        break;
+      case "C":
+        traduzido.push(100);
+        break;
+      case "D":
+        traduzido.push(500);
+        break;
+      case "M":
+        traduzido.push(1000);
+        break;
+      default:
+        console.log("Digito Romano Errado");
+    }
+  }
+
+  for (i = 0; i < traduzido.length; i++) {
+    var letra = traduzido[i];
+    var letraD = traduzido[i + 1];
+    var letraDD = traduzido[i + 2];
+    if (letra === 10 && letraD === 50 && letraDD != undefined) {
+      sum -= 50;
+    }
+    if (letra === 10 && letraD === 100 && letraDD != undefined) {
+      sum -= 100;
+    }
+    if (letra === 100 && letraD === 500 && letraDD != undefined) {
+      sum -= 500;
+    }
+    if (letra === 100 && letraD === 1000 && letraDD != undefined) {
+      sum -= 1000;
+    }
+    if (letra === 500 && letraD === 1000 && letraDD != undefined) {
+      sum -= 1000;
+    }
+    if (letra >= letraD) {
+      sum += letra;
+    } else if (letra < letraD) {
+      sum += letraD - letra;
+    }
+    if (letraD === undefined) {
+      sum += letra;
+      if (letra > traduzido[i - 1]) {
+        sum -= letra;
+      }
+    }
+  }
+  console.log(sum);
+</script>
